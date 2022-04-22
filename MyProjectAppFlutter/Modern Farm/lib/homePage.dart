@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sembast/sembast.dart';
 
 class homePage extends StatelessWidget {
   const homePage({Key? key}) : super(key: key);
@@ -130,7 +132,7 @@ class homePage extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.fromLTRB(20, 275, 200, 20),
                   child: Text(
-                    'รายการล่าสุด',
+                    'แสดงรายการ',
                     style: TextStyle(
                       fontFamily: 'Ubuntu',
                       fontSize: 18,
@@ -138,162 +140,6 @@ class homePage extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                     textAlign: TextAlign.center,
-                  ),
-                ),
-                Container(
-                  alignment: Alignment(20, 1.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Card(
-                        elevation: 10,
-                        margin: const EdgeInsets.symmetric(
-                            vertical: 0.0, horizontal: 5),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            ListTile(
-                              title: Text(
-                                "รายการ",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Ubuntu',
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              subtitle: Text(
-                                "วัน/เดือน/ปี",
-                                style: TextStyle(
-                                  color: Color(0xff107C10),
-                                  fontFamily: 'Ubuntu',
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              leading: CircleAvatar(
-                                radius: 32,
-                                backgroundColor: Color(0xFF96D587),
-                                child: FittedBox(
-                                    child: Text(
-                                  "1200",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontFamily: 'Ubuntu',
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                )),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  alignment: Alignment(20, 1.54),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Card(
-                        elevation: 10,
-                        margin: const EdgeInsets.symmetric(
-                            vertical: 0.0, horizontal: 5),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            ListTile(
-                              title: Text(
-                                "รายการ",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Ubuntu',
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              subtitle: Text(
-                                "วัน/เดือน/ปี",
-                                style: TextStyle(
-                                  color: Color(0xff107C10),
-                                  fontFamily: 'Ubuntu',
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              leading: CircleAvatar(
-                                radius: 32,
-                                backgroundColor: Color(0xFF96D587),
-                                child: FittedBox(
-                                    child: Text(
-                                  "8200",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontFamily: 'Ubuntu',
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                )),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  alignment: Alignment(20, 2.07),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Card(
-                        elevation: 10,
-                        margin: const EdgeInsets.symmetric(
-                            vertical: 0.0, horizontal: 5),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            ListTile(
-                              title: Text(
-                                "รายการ",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'Ubuntu',
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              subtitle: Text(
-                                "วัน/เดือน/ปี",
-                                style: TextStyle(
-                                  color: Color(0xff107C10),
-                                  fontFamily: 'Ubuntu',
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              leading: CircleAvatar(
-                                radius: 32,
-                                backgroundColor: Color(0xFF96D587),
-                                child: FittedBox(
-                                    child: Text(
-                                  "1500",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontFamily: 'Ubuntu',
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                )),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
                   ),
                 ),
               ],

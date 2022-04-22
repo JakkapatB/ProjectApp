@@ -1,8 +1,10 @@
 import 'package:betacode/incomeAndExpensesPage.dart';
 import 'package:betacode/homePage.dart';
 import 'package:betacode/advicePage.dart';
+import 'package:betacode/providers/transction_provider.dart';
 import 'package:betacode/test3.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,13 +13,20 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  static const String _title = 'Beta app';
+  static const String _title = 'Modern Fram';
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: _title,
-      home: MyStatefulWidget(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) {
+          return TransactionProvider();
+        }),
+      ],
+      child: const MaterialApp(
+        title: _title,
+        home: MyStatefulWidget(),
+      ),
     );
   }
 }
@@ -30,7 +39,6 @@ class MyStatefulWidget extends StatefulWidget {
 }
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-  DateTime date = DateTime(2022, 12, 24);
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
