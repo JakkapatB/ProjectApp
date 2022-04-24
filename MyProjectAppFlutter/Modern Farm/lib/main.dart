@@ -2,7 +2,7 @@ import 'package:betacode/incomeAndExpensesPage.dart';
 import 'package:betacode/homePage.dart';
 import 'package:betacode/advicePage.dart';
 import 'package:betacode/providers/transction_provider.dart';
-import 'package:betacode/test3.dart';
+import 'package:betacode/Howtouse.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -46,7 +46,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     homePage(),
     incomeAndExpensesPage(),
     advicePage(),
-    test3()
+    Howtouse()
   ];
 
   void _onItemTapped(int index) {

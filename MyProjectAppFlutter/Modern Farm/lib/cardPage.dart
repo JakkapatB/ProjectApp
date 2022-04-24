@@ -16,7 +16,7 @@ class cardPage extends StatelessWidget {
           "รายการบัญชี",
           style: TextStyle(
               color: Color.fromARGB(255, 238, 246, 244),
-              fontSize: 30.0,
+              fontSize: 20.0,
               fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
@@ -38,16 +38,22 @@ class cardPage extends StatelessWidget {
                 itemBuilder: (context, int index) {
                   Transactions data = provider.transactions[index];
                   return Card(
-                    color: Color.fromARGB(255, 144, 252, 193),
-                    elevation: 5,
+                    color: Color.fromARGB(255, 200, 203, 202),
+                    elevation: 3,
                     margin: const EdgeInsets.symmetric(
                         vertical: 12, horizontal: 12),
                     child: ListTile(
-                      leading: CircleAvatar(
-                        backgroundColor: Color.fromARGB(255, 255, 255, 255),
-                        radius: 30,
-                        child: FittedBox(
-                          child: Text(data.amount.toString()),
+                      leading: FittedBox(
+                        child: Row(
+                          children: [
+                            Text(
+                              data.amount.toString(),
+                              style: TextStyle(
+                                  color: Color.fromARGB(255, 0, 0, 0),
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
                         ),
                       ),
                       title:

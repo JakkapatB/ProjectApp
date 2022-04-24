@@ -77,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
           "คำแนะนำการปลูกข้าว",
           style: TextStyle(
               color: Color.fromARGB(255, 233, 246, 243),
-              fontSize: 30.0,
+              fontSize: 20.0,
               fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
@@ -89,50 +89,53 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       backgroundColor: Color.fromARGB(255, 222, 236, 228),
-      body: ListView.builder(
-        itemCount: items.length,
-        itemBuilder: (context, index) {
-          return Card(
-            // color: Color(),
-            child: InkWell(
-              splashColor: Colors.blue.withAlpha(30),
-              onTap: () {
-                debugPrint('Card tapped.');
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: ListView.builder(
+          itemCount: items.length,
+          itemBuilder: (context, index) {
+            return Card(
+              // color: Color(),
+              child: InkWell(
+                splashColor: Colors.blue.withAlpha(30),
+                onTap: () {
+                  debugPrint('Card tapped.');
 
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => SecondRoute(
-                          // cdimage: cdimage[index],
-                          todo: items[index],
-                          describ: describ[index],
-                          image: image[index])),
-                );
-              },
-              child: Row(
-                children: [
-                  Expanded(
-                    child: FittedBox(
-                      fit: BoxFit.contain, // otherwise the logo will be tiny
-                      child: Image.asset(
-                        image[index],
-                        width: 2,
-                        height: 1,
-                        alignment: Alignment.centerLeft,
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SecondRoute(
+                            // cdimage: cdimage[index],
+                            todo: items[index],
+                            describ: describ[index],
+                            image: image[index])),
+                  );
+                },
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: FittedBox(
+                        fit: BoxFit.contain, // otherwise the logo will be tiny
+                        child: Image.asset(
+                          image[index],
+                          width: 2,
+                          height: 1,
+                          alignment: Alignment.centerLeft,
+                        ),
                       ),
                     ),
-                  ),
-                  Expanded(
-                    child: Text(items[index],
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                            fontSize: 25, fontWeight: FontWeight.bold)),
-                  ),
-                ],
+                    Expanded(
+                      child: Text(items[index],
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold)),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }
@@ -155,12 +158,12 @@ class SecondRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 222, 236, 228),
+        backgroundColor: Color(0xFF006400),
         title: Text(
           todo,
           style: TextStyle(
-              color: Color(0xFF17352E),
-              fontSize: 30.0,
+              color: Color.fromARGB(255, 234, 244, 241),
+              fontSize: 20.0,
               fontWeight: FontWeight.bold),
         ),
       ),

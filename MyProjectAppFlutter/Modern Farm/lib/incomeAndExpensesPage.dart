@@ -41,7 +41,7 @@ class incomeAndExpensesPage extends StatelessWidget {
             "ยอดคงเหลือ",
             style: TextStyle(
                 color: Color(0xFF17352E),
-                fontSize: 20.0,
+                fontSize: 18.0,
                 fontWeight: FontWeight.bold),
           ),
         ),
