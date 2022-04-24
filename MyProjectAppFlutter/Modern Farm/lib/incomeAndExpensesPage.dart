@@ -62,148 +62,228 @@ class incomeAndExpensesPage extends StatelessWidget {
           }
           return SingleChildScrollView(
             child: Column(
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.all(0),
-                  child: Container(
-                      height: 700 * 0.8,
-                      child: Stack(
-                        children: <Widget>[
-                          Container(
-                            height: size.height * 0.2 - 27,
-                            decoration: BoxDecoration(
-                                color: Color(0xFFFFFFFF),
-                                borderRadius: BorderRadius.only(
-                                  bottomLeft: Radius.circular(40),
-                                  bottomRight: Radius.circular(40),
-                                )),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(200, 20, 0, 0),
-                            child: Text(
-                              sum.toString() + " ฿",
-                              style: TextStyle(
-                                fontFamily: 'Ubuntu',
-                                fontSize: 25,
-                                color: const Color(0xff17352e),
-                                fontWeight: FontWeight.bold,
-                              ),
+              children: [
+                Container(
+                  child: Column(children: [
+                    Row(
+                      children: [
+                        SizedBox(
+                          height: 30,
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            sum.toString() + " ฿",
+                            style: TextStyle(
+                              fontFamily: 'Ubuntu',
+                              fontSize: 25,
+                              color: const Color(0xff17352e),
+                              fontWeight: FontWeight.bold,
                             ),
+                            textAlign: TextAlign.center,
                           ),
-                          Container(
-                            alignment: Alignment(0, -0.68),
-                            child: Padding(
-                              padding: EdgeInsets.all(1.0),
-                              child: Container(
-                                height: size.height * 0.1 - 27,
-                                decoration: BoxDecoration(
-                                    color: Color(0xFF17352E),
-                                    borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(40),
-                                      bottomRight: Radius.circular(40),
-                                    )),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(100, 145, 100, 10),
-                            child: Text(
-                              'บันทึกรายรับรายจ่าย',
-                              style: TextStyle(
-                                fontFamily: 'Ubuntu',
-                                fontSize: 20,
-                                color: const Color(0xff17352e),
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(50, 200, 50, 0),
-                            child: TextField(
-                                controller: titleController,
-                                scrollPadding: EdgeInsets.all(10),
-                                decoration: InputDecoration(
-                                    errorText:
-                                        _validate ? 'กรุณากรอกข้อมูล' : null,
-                                    labelText: "รายการ",
-                                    border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(20))))),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(50, 290, 50, 0),
-                            child: TextField(
-                                controller: amountController,
-                                keyboardType: TextInputType.number,
-                                scrollPadding: EdgeInsets.all(10),
-                                decoration: InputDecoration(
-                                    labelText:
-                                        "รายรับ-รายจ่าย (รายจ่ายให้ใส่ -)",
-                                    border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(20))))),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(60, 370, 50, 0),
-                            child: ElevatedButton(
-                              child: Text('เลือก วัน/เดือน/ปี'),
-                              onPressed: () async {
-                                // newDate = await showDatePicker(
-                                //   context: context,
-                                //   initialDate: date,
-                                //   firstDate: DateTime(1900),
-                                //   lastDate: DateTime(2100),
-                                // );
-                                // if (newDate == null) return;
-                                // // print(Type(newDate));
-                                _selectDate(context);
-                              },
-                              style: ElevatedButton.styleFrom(
-                                primary: Color.fromARGB(255, 23, 198, 186),
-                                onPrimary: Color.fromARGB(255, 0, 0, 0),
-                                minimumSize: Size(400, 40),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(60, 450, 0, 0),
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  minimumSize: Size(165, 40),
-                                  primary: Color.fromARGB(255, 87, 234, 99),
-                                  onPrimary: Colors.black87),
-                              child: Text('ยืนยัน'),
-                              onPressed: () {
-                                print(selectDate.toString());
-                                var title = titleController.text;
-                                var amount = (amountController).text;
-                                var date_user = newDate;
-                                // print(newDate.toString());
-                                //เตรียมข้อมูล
-                                Transactions statement = Transactions(
-                                  title: title,
-                                  amount: double.parse(amount),
-                                  date: selectDate.toString(),
-                                );
-
-                                //provider
-                                var provider = Provider.of<TransactionProvider>(
-                                    context,
-                                    listen: false);
-                                provider.addTransaction(statement);
-                                titleController.text = "";
-                                amountController.text = "";
-                              },
-                            ),
-                          ),
-                          Container(
-                            alignment: Alignment(5, 4),
-                            margin:
-                                EdgeInsets.fromLTRB(195.0, 20.0, 0.0, 150.0),
-                            child: Image.asset('assets/images/02.png'),
-                          ),
-                        ],
+                        )
+                      ],
+                    )
+                  ]),
+                  height: size.height * 0.2 - 27,
+                  decoration: BoxDecoration(
+                      color: Color(0xFFFFFFFF),
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(0),
+                        bottomRight: Radius.circular(0),
                       )),
+                ),
+                Container(
+                  alignment: Alignment(0, -0.68),
+                  child: Padding(
+                    padding: EdgeInsets.all(0.0),
+                    child: Container(
+                      height: size.height * 0.1 - 27,
+                      decoration: BoxDecoration(
+                          color: Color(0xFF17352E),
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(40),
+                            bottomRight: Radius.circular(40),
+                          )),
+                    ),
+                  ),
+                ),
+                Container(
+                  child: Column(children: [
+                    Row(
+                      children: [
+                        SizedBox(
+                          height: 20,
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            'บันทึกรายรับรายจ่าย',
+                            style: TextStyle(
+                              fontFamily: 'Ubuntu',
+                              fontSize: 20,
+                              color: const Color(0xff17352e),
+                              fontWeight: FontWeight.bold,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        )
+                      ],
+                    )
+                  ]),
+                ),
+                Container(
+                  width: 300,
+                  height: 100,
+                  child: Column(children: [
+                    Row(
+                      children: [
+                        SizedBox(
+                          height: 20,
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: TextField(
+                              controller: titleController,
+                              scrollPadding: EdgeInsets.all(10),
+                              decoration: InputDecoration(
+                                  fillColor: Color.fromARGB(255, 214, 220, 209),
+                                  filled: true,
+                                  errorText:
+                                      _validate ? 'กรุณากรอกข้อมูล' : null,
+                                  labelText: "รายการ",
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(20))))),
+                        )
+                      ],
+                    )
+                  ]),
+                ),
+                Container(
+                  width: 300,
+                  height: 100,
+                  child: Column(children: [
+                    Row(
+                      children: [
+                        SizedBox(
+                          height: 12,
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: TextField(
+                              controller: amountController,
+                              keyboardType: TextInputType.number,
+                              scrollPadding: EdgeInsets.all(10),
+                              decoration: InputDecoration(
+                                  fillColor: Color.fromARGB(255, 214, 220, 209),
+                                  filled: true,
+                                  labelText: "รายรับ-รายจ่าย (รายจ่ายให้ใส่ -)",
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(20))))),
+                        )
+                      ],
+                    )
+                  ]),
+                ),
+                Container(
+                  width: 300,
+                  height: 100,
+                  child: Column(children: [
+                    Row(
+                      children: [
+                        SizedBox(
+                          height: 0,
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: ElevatedButton(
+                            child: Text('เลือก วัน/เดือน/ปี'),
+                            onPressed: () async {
+                              // newDate = await showDatePicker(
+                              //   context: context,
+                              //   initialDate: date,
+                              //   firstDate: DateTime(1900),
+                              //   lastDate: DateTime(2100),
+                              // );
+                              // if (newDate == null) return;
+                              // // print(Type(newDate));
+                              _selectDate(context);
+                            },
+                            style: ElevatedButton.styleFrom(
+                              primary: Color.fromARGB(255, 23, 198, 186),
+                              onPrimary: Color.fromARGB(255, 0, 0, 0),
+                              minimumSize: Size(400, 40),
+                            ),
+                          ),
+                        )
+                      ],
+                    )
+                  ]),
+                ),
+                Container(
+                  width: 300,
+                  height: 100,
+                  child: Column(children: [
+                    Row(
+                      children: [
+                        SizedBox(
+                          height: 0,
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                minimumSize: Size(165, 40),
+                                primary: Color.fromARGB(255, 2, 74, 9),
+                                onPrimary: Color.fromARGB(221, 255, 255, 255)),
+                            child: Text('ยืนยัน'),
+                            onPressed: () {
+                              print(selectDate.toString());
+                              var title = titleController.text;
+                              var amount = (amountController).text;
+                              var date_user = newDate;
+                              // print(newDate.toString());
+                              //เตรียมข้อมูล
+                              Transactions statement = Transactions(
+                                title: title,
+                                amount: double.parse(amount),
+                                date: selectDate.toString(),
+                              );
+
+                              //provider
+                              var provider = Provider.of<TransactionProvider>(
+                                  context,
+                                  listen: false);
+                              provider.addTransaction(statement);
+                              titleController.text = "";
+                              amountController.text = "";
+                            },
+                          ),
+                        )
+                      ],
+                    )
+                  ]),
                 ),
               ],
             ),

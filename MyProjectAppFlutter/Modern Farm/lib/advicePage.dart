@@ -76,19 +76,19 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(
           "คำแนะนำการปลูกข้าว",
           style: TextStyle(
-              color: Color(0xFF17352E),
+              color: Color.fromARGB(255, 233, 246, 243),
               fontSize: 30.0,
               fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
         elevation: 0,
-        backgroundColor: Color(0xFFABD793),
+        backgroundColor: Color(0xFF006400),
         leading: IconButton(
           icon: Icon(Icons.ac_unit_sharp),
           onPressed: () {},
         ),
       ),
-      backgroundColor: Color.fromARGB(255, 167, 253, 174),
+      backgroundColor: Color.fromARGB(255, 222, 236, 228),
       body: ListView.builder(
         itemCount: items.length,
         itemBuilder: (context, index) {
@@ -114,7 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Expanded(
                     child: FittedBox(
                       fit: BoxFit.contain, // otherwise the logo will be tiny
-                      child: Image.network(
+                      child: Image.asset(
                         image[index],
                         width: 2,
                         height: 1,
@@ -155,7 +155,7 @@ class SecondRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFFABD793),
+        backgroundColor: Color.fromARGB(255, 222, 236, 228),
         title: Text(
           todo,
           style: TextStyle(
@@ -171,7 +171,7 @@ class SecondRoute extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Image.network(image),
+              Image.asset(image),
               // Align(
               //   alignment: Alignment.centerRight,
               //   child: Text(cdimage, style: TextStyle(fontSize: 16)),
