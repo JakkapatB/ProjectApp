@@ -1,5 +1,6 @@
 import 'package:betacode/cardPage.dart';
 import 'package:betacode/providers/transction_provider.dart';
+import 'package:betacode/providers/transction_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sembast/sembast.dart';
