@@ -9,13 +9,29 @@ import 'package:provider/provider.dart';
 
 class incomeAndExpensesPage extends StatelessWidget {
   const incomeAndExpensesPage({Key? key}) : super(key: key);
+
+  static DateTime selectDate = DateTime.now();
+  Future<Null> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: selectDate,
+        firstDate: DateTime(1900),
+        lastDate: DateTime(2100));
+
+    if (picked != null && picked != selectDate) {
+      selectDate = picked;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final titleController = TextEditingController();
     final amountController = TextEditingController();
+    var date_user;
     DateTime? newDate;
     var size = MediaQuery.of(context).size;
     DateTime date = DateTime.now();
+    Provider.of<TransactionProvider>(context, listen: false).initData();
 
     return Scaffold(
       appBar: AppBar(
@@ -40,6 +56,7 @@ class incomeAndExpensesPage extends StatelessWidget {
       body: Consumer(
         builder: (context, TransactionProvider provider, child) {
           double sum = 0;
+          bool _validate = false;
           for (int i = 0; i < provider.transactions.length; i++) {
             sum += provider.transactions[i].amount!;
           }
@@ -64,7 +81,7 @@ class incomeAndExpensesPage extends StatelessWidget {
                           Padding(
                             padding: EdgeInsets.fromLTRB(200, 20, 0, 0),
                             child: Text(
-                              sum.toString(),
+                              sum.toString() + " ฿",
                               style: TextStyle(
                                 fontFamily: 'Ubuntu',
                                 fontSize: 25,
@@ -106,6 +123,8 @@ class incomeAndExpensesPage extends StatelessWidget {
                                 controller: titleController,
                                 scrollPadding: EdgeInsets.all(10),
                                 decoration: InputDecoration(
+                                    errorText:
+                                        _validate ? 'กรุณากรอกข้อมูล' : null,
                                     labelText: "รายการ",
                                     border: OutlineInputBorder(
                                         borderRadius: BorderRadius.all(
@@ -118,27 +137,30 @@ class incomeAndExpensesPage extends StatelessWidget {
                                 keyboardType: TextInputType.number,
                                 scrollPadding: EdgeInsets.all(10),
                                 decoration: InputDecoration(
-                                    labelText: "จำนวนเงิน",
+                                    labelText:
+                                        "รายรับ-รายจ่าย (รายจ่ายให้ใส่ -)",
                                     border: OutlineInputBorder(
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(20))))),
                           ),
                           Padding(
-                            padding: EdgeInsets.fromLTRB(60, 380, 50, 0),
+                            padding: EdgeInsets.fromLTRB(60, 370, 50, 0),
                             child: ElevatedButton(
                               child: Text('เลือก วัน/เดือน/ปี'),
                               onPressed: () async {
-                                newDate = await showDatePicker(
-                                  context: context,
-                                  initialDate: date,
-                                  firstDate: DateTime(1900),
-                                  lastDate: DateTime(2100),
-                                );
-                                if (newDate == null) return;
+                                // newDate = await showDatePicker(
+                                //   context: context,
+                                //   initialDate: date,
+                                //   firstDate: DateTime(1900),
+                                //   lastDate: DateTime(2100),
+                                // );
+                                // if (newDate == null) return;
+                                // // print(Type(newDate));
+                                _selectDate(context);
                               },
                               style: ElevatedButton.styleFrom(
-                                primary: Color(0xff3CB371),
-                                onPrimary: Colors.white,
+                                primary: Color.fromARGB(255, 23, 198, 186),
+                                onPrimary: Color.fromARGB(255, 0, 0, 0),
                                 minimumSize: Size(400, 40),
                               ),
                             ),
@@ -148,21 +170,30 @@ class incomeAndExpensesPage extends StatelessWidget {
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                   minimumSize: Size(165, 40),
-                                  primary: Color(0xff5dd267),
+                                  primary: Color.fromARGB(255, 87, 234, 99),
                                   onPrimary: Colors.black87),
-                              child: Text('รายรับ'),
-                              onPressed: () {},
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(60, 500, 0, 0),
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  minimumSize: Size(165, 40),
-                                  primary: Color(0xffff4167),
-                                  onPrimary: Colors.black87),
-                              child: Text('รายจ่าย'),
-                              onPressed: () {},
+                              child: Text('ยืนยัน'),
+                              onPressed: () {
+                                print(selectDate.toString());
+                                var title = titleController.text;
+                                var amount = (amountController).text;
+                                var date_user = newDate;
+                                // print(newDate.toString());
+                                //เตรียมข้อมูล
+                                Transactions statement = Transactions(
+                                  title: title,
+                                  amount: double.parse(amount),
+                                  date: selectDate.toString(),
+                                );
+
+                                //provider
+                                var provider = Provider.of<TransactionProvider>(
+                                    context,
+                                    listen: false);
+                                provider.addTransaction(statement);
+                                titleController.text = "";
+                                amountController.text = "";
+                              },
                             ),
                           ),
                           Container(
@@ -179,7 +210,7 @@ class incomeAndExpensesPage extends StatelessWidget {
           );
         },
       ),
-      backgroundColor: Color(0xFFABD793),
+      backgroundColor: Color.fromARGB(255, 222, 236, 228),
     );
   }
 }
